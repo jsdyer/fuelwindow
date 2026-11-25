@@ -17,6 +17,7 @@
   "access": "browser",
   "data_info": {
     "mode": "snapshot",
-    "detail": "Official Nova Scotia Energy Board and PEI IRAC regulated prices, checked twice daily; calculations stay in your browser."
+    "detail": "Official Nova Scotia Energy Board and PEI IRAC regulated prices, checked twice daily; calculations stay in your browser.",
+    "cadence": "Twice daily"
   }
 }
