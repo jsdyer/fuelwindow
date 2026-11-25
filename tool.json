@@ -1,16 +1,22 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "fuelwindow",
+  "title": "Fuel Window",
+  "description": "Compare regulated fuel prices in Nova Scotia and PEI, estimate a fill or trip, and keep private vehicle budgets.",
+  "category": "money",
+  "tags": [
+    "fuel",
+    "Nova Scotia",
+    "PEI",
+    "trip cost",
+    "heating oil"
+  ],
+  "icon": "wallet",
+  "url": "/fuelwindow/",
+  "source": "https://github.com/jsdyer/fuelwindow",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "snapshot",
+    "detail": "Official Nova Scotia Energy Board and PEI IRAC regulated prices, checked twice daily; calculations stay in your browser."
   }
 }

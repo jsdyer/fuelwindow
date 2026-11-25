@@ -1,21 +1,8 @@
-import test from 'node:test';
-import assert from 'node:assert/strict';
-import { cleanLines } from '../web/model.mjs';
-test('trims, removes blanks and preserves first-seen order', () => {
-  assert.deepEqual(cleanLines('  Halifax\nLangley\nHalifax\n\nVancouver  '), {
-    text: 'Halifax\nLangley\nVancouver', count: 3, removed: 1,
-  });
-});
-test('supports Windows and old Mac line endings', () => {
-  assert.equal(cleanLines('a\r\nb\ra').text, 'a\nb');
-});
-test('empty text and whitespace produce an empty result', () => {
-  assert.deepEqual(cleanLines(' \n\t'), { text: '', count: 0, removed: 0 });
-});
-test('preserves case and Unicode', () => {
-  assert.equal(cleanLines('Québec\nquébec\n東京\nQuébec').text, 'Québec\nquébec\n東京');
-});
-test('treats markup as ordinary text', () => {
-  assert.equal(cleanLines('<script>alert(1)</script>\n<script>alert(1)</script>').text, '<script>alert(1)</script>');
-});
-test('rejects non-text input', () => { assert.throws(() => cleanLines(null), TypeError); });
+import test from 'node:test';import assert from 'node:assert/strict';
+import {costs,range,previousPrice,validatePlan,label} from '../web/model.mjs';
+const r={id:'new-zone-biofuel-self',province:'XY',zone:'New zone',fuel:'biofuel',service:'self',min:150,max:160,effective_date:'2026-11-24'};
+test('fill and trip use cents per litre and actual litres',()=>{const c=costs(r,50,250,8);assert.equal(c.fillMin,75);assert.equal(c.fillMax,80);assert.equal(c.tripLitres,20);assert.equal(c.tripMax,32);});
+test('maximum-only heating oil never invents a minimum',()=>{assert.equal(costs({...r,min:null},1000,0,8).fillMin,null);assert.equal(range(null,12,n=>String(n)),'Up to 12');});
+test('invalid, empty and impossible assumptions reject',()=>{for(const x of ['',-1,Infinity,'bad'])assert.throws(()=>costs(r,x,250,8));assert.throws(()=>costs(r,50,250,0));});
+test('date-specific history uses a previous edition, not another source or a same-date retry',()=>{const s={history:[{prices:[{...r,max:999}]},{prices:[{...r,id:'other',effective_date:'2026-11-23',max:888}]},{prices:[{...r,effective_date:'2026-11-20',max:155}]}]};assert.equal(previousPrice(s,r).max,155);assert.equal(previousPrice({history:[]},r),null);});
+test('saved plans accept expanded coverage and preserve old source editions',()=>{const p={name:'older capture',price:r,checked_at:'2026-11-24T10:00:00Z',litres:50,distance:200,consumption:7};assert.deepEqual(validatePlan({tool:'fuelwindow',schema:1,plans:[p]}),[p]);assert.match(label(r),/New zone/);assert.throws(()=>validatePlan({tool:'fuelwindow',schema:1,plans:[{...p,price:{...r,min:180}}]}));});

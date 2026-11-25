@@ -1,7 +1,9 @@
-// Keep transformations separate from the DOM so they can be tested directly.
-export function cleanLines(text) {
-  if (typeof text !== 'string') throw new TypeError('Expected text');
-  const lines = text.split(/\r\n|\r|\n/).map(line => line.trim()).filter(Boolean);
-  const unique = [...new Set(lines)];
-  return { text: unique.join('\n'), count: unique.length, removed: lines.length - unique.length };
-}
+export const fuelName={regular:'Regular gasoline',midgrade:'Mid-grade gasoline',premium:'Premium gasoline',diesel:'Diesel',furnace:'Furnace oil'};
+export const serviceName={self:'Self serve',full:'Full serve',delivery:'Delivery · maximum'};
+export const money=n=>new Intl.NumberFormat('en-CA',{style:'currency',currency:'CAD'}).format(n);
+export function label(r){return `${r.province} · ${r.zone} · ${fuelName[r.fuel]||r.fuel} · ${serviceName[r.service]||r.service}`;}
+export function finite(value,min,max){const n=typeof value==='string'&&value.trim()===''?NaN:Number(value);if(!Number.isFinite(n)||n<min||n>max)throw new Error(`Enter a number from ${min} to ${max}.`);return n;}
+export function costs(row,litres,distance,consumption){litres=finite(litres,0,100000);distance=finite(distance,0,100000);consumption=finite(consumption,0.1,200);const tripLitres=distance*consumption/100;return {fillMin:row.min===null?null:litres*row.min/100,fillMax:litres*row.max/100,tripMin:row.min===null?null:tripLitres*row.min/100,tripMax:tripLitres*row.max/100,tripLitres};}
+export function range(min,max,formatter=money){return min===null?`Up to ${formatter(max)}`:min===max?formatter(max):`${formatter(min)} – ${formatter(max)}`;}
+export function previousPrice(snapshot,row){return snapshot.history.filter(h=>h.prices.some(p=>p.id===row.id&&p.effective_date<row.effective_date)).flatMap(h=>h.prices).filter(p=>p.id===row.id).sort((a,b)=>b.effective_date.localeCompare(a.effective_date))[0]||null;}
+export function validatePlan(p){if(!p||p.schema!==1||p.tool!=='fuelwindow'||!Array.isArray(p.plans)||p.plans.length>100)throw new Error('Choose a Fuel Window export with at most 100 plans.');for(const x of p.plans){if(!x.price||typeof x.price.id!=='string'||typeof x.name!=='string'||x.name.length>100||typeof x.price.effective_date!=='string'||typeof x.checked_at!=='string')throw new Error('Invalid saved plan.');finite(x.price.max,20,1000);if(x.price.min!==null){finite(x.price.min,20,1000);if(x.price.min>x.price.max)throw new Error('Invalid saved price range.');}costs(x.price,x.litres,x.distance,x.consumption);}return p.plans;}

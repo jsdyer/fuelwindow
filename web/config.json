@@ -1,0 +1,8 @@
+{
+  "default_price": "ns-zone1-regular-self",
+  "litres": 50,
+  "distance": 250,
+  "consumption": 8,
+  "max_saved": 100,
+  "stale_hours": 48
+}

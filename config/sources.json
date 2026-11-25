@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "history_limit": 120,
+  "timeout_seconds": 35,
+  "max_bytes": 3000000,
+  "sources": [
+    {
+      "id": "ns",
+      "label": "Nova Scotia Energy Board",
+      "adapter": "ns_html",
+      "url": "https://nserbt.ca/nseb/mandates/gasoline-diesel-pricing/gasoline-diesel-prices-zone-map",
+      "expected_rows": 12
+    },
+    {
+      "id": "pei",
+      "label": "PEI Island Regulatory and Appeals Commission",
+      "adapter": "pei_html",
+      "url": "https://irac.pe.ca/petrol/current-petroleum-prices/",
+      "expected_rows": 9
+    }
+  ]
+}

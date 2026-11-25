@@ -1,37 +1,16 @@
-import { cleanLines } from './model.mjs';
-const input = document.querySelector('#input');
-const output = document.querySelector('#output');
-const status = document.querySelector('#status');
-const copy = document.querySelector('#copy');
-function update() {
-  const result = cleanLines(input.value);
-  output.value = result.text;
-  status.textContent = `${result.count} unique ${result.count === 1 ? 'line' : 'lines'}; ${result.removed} ${result.removed === 1 ? 'duplicate' : 'duplicates'} removed.`;
-  copy.disabled = result.count === 0;
-}
-input.addEventListener('input', update);
-document.querySelector('#sample').addEventListener('click', () => {
-  input.value = '  Halifax\nLangley\nHalifax\n\nVancouver  ';
-  update();
-});
-document.querySelector('#clear').addEventListener('click', () => {
-  input.value = '';
-  update();
-  input.focus();
-});
-if (navigator.clipboard && window.isSecureContext) {
-  copy.hidden = false;
-  copy.disabled = true;
-  copy.addEventListener('click', async () => {
-    try {
-      await navigator.clipboard.writeText(output.value);
-      status.textContent = 'Result copied.';
-    } catch {
-      output.focus();
-      output.select();
-      status.textContent = 'Copy was unavailable. The result is selected so you can copy it manually.';
-    }
-  });
-}
-// Namespace future preference storage as coolcode:<tool-id>:<key>.
-// Do not persist pasted text or uploads by default.
+import {label,costs,range,money,previousPrice,validatePlan} from './model.mjs';
+const $=id=>document.getElementById(id), key='coolcode:fuelwindow:plans';
+let snapshot,config,rows=[],plans=[];
+const text=(tag,value)=>{const e=document.createElement(tag);e.textContent=value;return e;};
+function current(){return rows.find(r=>r.id===$('price').value);}
+function values(){return {litres:$('litres').value,distance:$('distance').value,consumption:$('consumption').value};}
+function render(){const r=current();if(!r)return;const source=snapshot.sources.find(s=>s.prices.some(p=>p.id===r.id));$('price-label').textContent=label(r);$('price-range').textContent=range(r.min,r.max,n=>`${n.toFixed(1)}¢/L`);$('edition').textContent=`Effective ${r.effective_date} · checked ${new Date(source.checked_at).toLocaleString()}`;const old=previousPrice(snapshot,r);$('change').textContent=r.published_change!==undefined?`IRAC published change: ${r.published_change>0?'+':''}${r.published_change.toFixed(1)}¢/L to the ${r.change_basis}.`:old?`Maximum changed ${(r.max-old.max)>0?'+':''}${(r.max-old.max).toFixed(1)}¢/L from the collected ${old.effective_date} edition.`:'No earlier collected edition yet. Price-change history starts with our first valid capture.';$('source').replaceChildren();const link=text('a',source.label);link.href=source.url;$('source').append(link);const stale=(Date.now()-Date.parse(source.checked_at))/3600000>config.stale_hours;if(source.status!=='ok'||stale)$('source').append(text('strong',' · Older capture: check the official source before acting.'));try{const v=values(),c=costs(r,v.litres,v.distance,v.consumption);$('fill').textContent=range(c.fillMin,c.fillMax);$('fill-detail').textContent=`${Number(v.litres).toLocaleString()} litres at this edition`;$('trip-card').hidden=r.fuel==='furnace';$('trip').textContent=range(c.tripMin,c.tripMax);$('trip-detail').textContent=`${Number(v.distance).toLocaleString()} km · ${c.tripLitres.toFixed(1)} L estimated`;$('input-error').textContent='';$('save').disabled=false;}catch(e){$('input-error').textContent=e.message;$('fill').textContent='—';$('trip').textContent='—';$('save').disabled=true;}}
+function table(){const q=$('filter').value.toLowerCase(),visible=rows.filter(r=>label(r).toLowerCase().includes(q));$('prices').replaceChildren();for(const r of visible){const tr=document.createElement('tr');for(const v of [label(r),r.min===null?'Not set':r.min.toFixed(1),r.max.toFixed(1),r.effective_date])tr.append(text('td',v));const td=document.createElement('td'),b=text('button','Use');b.className='secondary';b.setAttribute('aria-label',`Use ${label(r)}`);b.onclick=()=>{$('price').value=r.id;render();$('price').focus();};td.append(b);tr.append(td);$('prices').append(tr);}$('table-caption').textContent=`${visible.length} of ${rows.length} regulated prices · cents per litre`;}
+function persist(){try{localStorage.setItem(key,JSON.stringify({schema:1,tool:'fuelwindow',plans}));return true;}catch{$('status').textContent='Browser storage is unavailable. Export plans to keep a copy.';return false;}}
+function saved(){const out=$('saved');out.replaceChildren();if(!plans.length)out.append(text('p','No saved plans yet.'));plans.forEach((p,i)=>{const a=document.createElement('article');a.append(text('h3',p.name),text('p',label(p.price)),text('p',`Price edition ${p.price.effective_date} · ${p.litres} L · ${p.distance} km · ${p.consumption} L/100 km`));const c=costs(p.price,p.litres,p.distance,p.consumption);a.append(text('strong',`Fill ${range(c.fillMin,c.fillMax)}`));if(p.price.fuel!=='furnace')a.append(text('p',`Trip ${range(c.tripMin,c.tripMax)}`));const del=text('button','Remove');del.className='secondary';del.onclick=()=>{plans.splice(i,1);persist();saved();};a.append(del);out.append(a);});}
+$('save').onclick=()=>{try{if(plans.length>=config.max_saved)throw new Error(`Export or remove a plan first; this browser limit is ${config.max_saved}.`);const r=current(),v=values();costs(r,v.litres,v.distance,v.consumption);const s=snapshot.sources.find(s=>s.prices.some(p=>p.id===r.id));plans.push({name:$('plan-name').value.trim()||'Fuel plan',price:r,...Object.fromEntries(Object.entries(v).map(([k,v])=>[k,Number(v)])),checked_at:s.checked_at,saved_at:new Date().toISOString()});const ok=persist();saved();if(ok)$('status').textContent='Plan saved on this device.';}catch(e){$('status').textContent=e.message;}};
+$('export').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify({schema:1,tool:'fuelwindow',plans},null,2)],{type:'application/json'}));a.download='fuelwindow-plans.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+$('import').onchange=async()=>{try{const f=$('import').files[0];if(!f)return;if(f.size>1000000)throw new Error('Choose a JSON export smaller than 1 MB.');const incoming=validatePlan(JSON.parse(await f.text()));if(plans.length+incoming.length>config.max_saved)throw new Error('Import would exceed the saved-plan limit.');plans.push(...incoming);persist();saved();$('status').textContent=`Imported ${incoming.length} plans.`;}catch(e){$('status').textContent=e.message;}finally{$('import').value='';}};
+$('clear').onclick=()=>{plans=[];persist();saved();$('status').textContent='Saved plans cleared from this browser.';};
+for(const id of ['price','litres','distance','consumption'])$(id).addEventListener('input',render);$('filter').addEventListener('input',table);
+try{[snapshot,config]=await Promise.all([fetch('./data/prices.json').then(r=>{if(!r.ok)throw new Error('Price snapshot is unavailable.');return r.json();}),fetch('./config.json').then(r=>r.json())]);rows=snapshot.sources.flatMap(s=>s.prices);for(const r of rows){const o=text('option',label(r));o.value=r.id;$('price').append(o);}$('price').value=rows.some(r=>r.id===config.default_price)?config.default_price:rows[0].id;for(const id of ['litres','distance','consumption'])$(id).value=config[id];try{const raw=localStorage.getItem(key);if(raw)plans=validatePlan(JSON.parse(raw));}catch{$('status').textContent='Saved plans could not be read. Current prices are still available.';}render();table();saved();$('status').textContent=`${rows.length} published prices · ${snapshot.sources.length} official sources · calculations stay on this device.`;}catch(e){$('status').textContent=e.message+' Use the official source links below.';$('save').disabled=true;}
