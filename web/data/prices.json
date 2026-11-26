@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "last_attempt_at": "2026-11-26T02:12:36+00:00",
+  "last_attempt_at": "2026-11-26T09:23:04+00:00",
   "sources": [
     {
       "id": "ns",
       "label": "Nova Scotia Energy Board",
       "url": "https://nserbt.ca/nseb/mandates/gasoline-diesel-pricing/gasoline-diesel-prices-zone-map",
-      "checked_at": "2026-11-26T02:12:36+00:00",
+      "checked_at": "2026-11-26T09:23:04+00:00",
       "status": "ok",
       "sha256": "b7cd7761e3d03a1377e0ef4e780586b01c13708e25a8a28fbbe099ebe0efa0e5",
       "prices": [
@@ -136,7 +136,7 @@
       "id": "pei",
       "label": "PEI Island Regulatory and Appeals Commission",
       "url": "https://irac.pe.ca/petrol/current-petroleum-prices/",
-      "checked_at": "2026-11-26T02:12:36+00:00",
+      "checked_at": "2026-11-26T09:23:04+00:00",
       "status": "ok",
       "sha256": "7daf5b8af8b56ee3b864f220890ba748ae0c62ee67d017e58fb1a6bbed82ffc8",
       "prices": [
