@@ -42,3 +42,7 @@ Builds are offline, publishing only `web/` to ignored `dist/`. HTML, CSS, import
 `.github/workflows/pages.yml` checks sources at **07:19 and 19:19 UTC daily**, with `workflow_dispatch`. Push/PR builds use committed snapshots without network collection. Scheduled/manual runs validate, commit `web/data`, and deploy in the same workflow; they do not rely on a bot commit triggering another run. `.github/workflows/schedule-guard.yml` renews only the declared collector and itself. No API keys, Worker endpoint or repository secrets are needed.
 
 Probe `/fuelwindow/data/prices.json`: inspect each `sources[].checked_at` (warn after 48 hours), `sources[].status`, `row_count` and `prices[].effective_date`. Top-level attempt time is not successful freshness. Register the workflow/guard with the central watchdog; a selected-repository GitHub App installation must include this repo.
+
+## Ready-to-use example
+
+[PEI Gas Prices and Fill-Up Calculator](https://coolcode.ca/fuelwindow/pei-fill-up.html) opens this scenario in the same tool. Estimate a 45-litre fill with the latest retained PEI regular self-serve gasoline price. Check the effective date and range before comparing it with a posted pump price or changing the amount you need.
