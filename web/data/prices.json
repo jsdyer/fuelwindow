@@ -1,14 +1,14 @@
 {
   "schema": 1,
-  "last_attempt_at": "2026-11-27T02:10:27+00:00",
+  "last_attempt_at": "2026-11-27T09:22:58+00:00",
   "sources": [
     {
       "id": "ns",
       "label": "Nova Scotia Energy Board",
       "url": "https://nserbt.ca/nseb/mandates/gasoline-diesel-pricing/gasoline-diesel-prices-zone-map",
-      "checked_at": "2026-11-27T02:10:27+00:00",
+      "checked_at": "2026-11-27T09:22:58+00:00",
       "status": "ok",
-      "sha256": "25cab3bddd910f15e7eec67bf0e9fe4c2f876b36cbf7ddf9810c9fc91a22215c",
+      "sha256": "9687e7598f7ba5b6b2c01e74252586ecde874bec2665d1c4e50c2d64d834bbaa",
       "prices": [
         {
           "id": "ns-zone1-regular-self",
@@ -16,9 +16,9 @@
           "zone": "Zone 1",
           "fuel": "regular",
           "service": "self",
-          "min": 156.0,
-          "max": 159.0,
-          "effective_date": "2026-11-24"
+          "min": 150.7,
+          "max": 153.7,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone1-diesel-self",
@@ -26,9 +26,9 @@
           "zone": "Zone 1",
           "fuel": "diesel",
           "service": "self",
-          "min": 225.9,
-          "max": 228.8,
-          "effective_date": "2026-11-24"
+          "min": 215.5,
+          "max": 218.5,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone2-regular-self",
@@ -36,9 +36,9 @@
           "zone": "Zone 2",
           "fuel": "regular",
           "service": "self",
-          "min": 156.6,
-          "max": 159.5,
-          "effective_date": "2026-11-24"
+          "min": 151.3,
+          "max": 154.3,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone2-diesel-self",
@@ -46,9 +46,9 @@
           "zone": "Zone 2",
           "fuel": "diesel",
           "service": "self",
-          "min": 226.4,
-          "max": 229.4,
-          "effective_date": "2026-11-24"
+          "min": 216.1,
+          "max": 219.1,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone3-regular-self",
@@ -56,9 +56,9 @@
           "zone": "Zone 3",
           "fuel": "regular",
           "service": "self",
-          "min": 157.0,
-          "max": 160.0,
-          "effective_date": "2026-11-24"
+          "min": 151.7,
+          "max": 154.7,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone3-diesel-self",
@@ -66,9 +66,9 @@
           "zone": "Zone 3",
           "fuel": "diesel",
           "service": "self",
-          "min": 226.9,
-          "max": 229.8,
-          "effective_date": "2026-11-24"
+          "min": 216.6,
+          "max": 219.5,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone4-regular-self",
@@ -76,9 +76,9 @@
           "zone": "Zone 4",
           "fuel": "regular",
           "service": "self",
-          "min": 157.1,
-          "max": 160.1,
-          "effective_date": "2026-11-24"
+          "min": 151.9,
+          "max": 154.8,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone4-diesel-self",
@@ -86,9 +86,9 @@
           "zone": "Zone 4",
           "fuel": "diesel",
           "service": "self",
-          "min": 227.0,
-          "max": 230.0,
-          "effective_date": "2026-11-24"
+          "min": 216.7,
+          "max": 219.6,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone5-regular-self",
@@ -96,9 +96,9 @@
           "zone": "Zone 5",
           "fuel": "regular",
           "service": "self",
-          "min": 157.1,
-          "max": 160.1,
-          "effective_date": "2026-11-24"
+          "min": 151.9,
+          "max": 154.8,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone5-diesel-self",
@@ -106,9 +106,9 @@
           "zone": "Zone 5",
           "fuel": "diesel",
           "service": "self",
-          "min": 227.0,
-          "max": 230.0,
-          "effective_date": "2026-11-24"
+          "min": 216.7,
+          "max": 219.6,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone6-regular-self",
@@ -116,9 +116,9 @@
           "zone": "Zone 6",
           "fuel": "regular",
           "service": "self",
-          "min": 157.9,
-          "max": 160.9,
-          "effective_date": "2026-11-24"
+          "min": 152.7,
+          "max": 155.6,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "ns-zone6-diesel-self",
@@ -126,9 +126,9 @@
           "zone": "Zone 6",
           "fuel": "diesel",
           "service": "self",
-          "min": 227.8,
-          "max": 230.8,
-          "effective_date": "2026-11-24"
+          "min": 217.5,
+          "max": 220.4,
+          "effective_date": "2026-11-27"
         }
       ]
     },
@@ -136,9 +136,9 @@
       "id": "pei",
       "label": "PEI Island Regulatory and Appeals Commission",
       "url": "https://irac.pe.ca/petrol/current-petroleum-prices/",
-      "checked_at": "2026-11-27T02:10:27+00:00",
+      "checked_at": "2026-11-27T09:22:58+00:00",
       "status": "ok",
-      "sha256": "7daf5b8af8b56ee3b864f220890ba748ae0c62ee67d017e58fb1a6bbed82ffc8",
+      "sha256": "afffb67efe4fc6efd7410b7f9e6cebc31ae00c7808dd255756a919314eb15e34",
       "prices": [
         {
           "id": "pei-island-regular-self",
@@ -146,9 +146,9 @@
           "zone": "Island-wide",
           "fuel": "regular",
           "service": "self",
-          "min": 155.7,
-          "max": 156.9,
-          "effective_date": "2026-11-24",
+          "min": 151.7,
+          "max": 152.8,
+          "effective_date": "2026-11-27",
           "published_change": -3.5,
           "change_basis": "minimum"
         },
@@ -158,9 +158,9 @@
           "zone": "Island-wide",
           "fuel": "midgrade",
           "service": "self",
-          "min": 163.2,
-          "max": 164.3,
-          "effective_date": "2026-11-24"
+          "min": 158.6,
+          "max": 159.7,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "pei-island-premium-self",
@@ -168,10 +168,10 @@
           "zone": "Island-wide",
           "fuel": "premium",
           "service": "self",
-          "min": 170.7,
-          "max": 171.8,
-          "effective_date": "2026-11-24",
-          "published_change": -4.0,
+          "min": 165.5,
+          "max": 166.6,
+          "effective_date": "2026-11-27",
+          "published_change": -4.5,
           "change_basis": "minimum"
         },
         {
@@ -180,10 +180,10 @@
           "zone": "Island-wide",
           "fuel": "diesel",
           "service": "self",
-          "min": 227.4,
-          "max": 228.5,
-          "effective_date": "2026-11-24",
-          "published_change": -5.0,
+          "min": 217.0,
+          "max": 218.2,
+          "effective_date": "2026-11-27",
+          "published_change": -9.0,
           "change_basis": "minimum"
         },
         {
@@ -192,9 +192,9 @@
           "zone": "Island-wide",
           "fuel": "regular",
           "service": "full",
-          "min": 155.7,
-          "max": 159.7,
-          "effective_date": "2026-11-24"
+          "min": 151.7,
+          "max": 155.7,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "pei-island-midgrade-full",
@@ -202,9 +202,9 @@
           "zone": "Island-wide",
           "fuel": "midgrade",
           "service": "full",
-          "min": 163.2,
-          "max": 167.2,
-          "effective_date": "2026-11-24"
+          "min": 158.6,
+          "max": 162.6,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "pei-island-premium-full",
@@ -212,9 +212,9 @@
           "zone": "Island-wide",
           "fuel": "premium",
           "service": "full",
-          "min": 170.7,
-          "max": 174.7,
-          "effective_date": "2026-11-24"
+          "min": 165.5,
+          "max": 169.5,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "pei-island-diesel-full",
@@ -222,9 +222,9 @@
           "zone": "Island-wide",
           "fuel": "diesel",
           "service": "full",
-          "min": 227.4,
-          "max": 231.4,
-          "effective_date": "2026-11-24"
+          "min": 217.0,
+          "max": 221.0,
+          "effective_date": "2026-11-27"
         },
         {
           "id": "pei-island-furnace-delivery",
@@ -233,9 +233,9 @@
           "fuel": "furnace",
           "service": "delivery",
           "min": null,
-          "max": 179.1,
-          "effective_date": "2026-11-24",
-          "published_change": -6.0,
+          "max": 168.6,
+          "effective_date": "2026-11-27",
+          "published_change": -10.0,
           "change_basis": "maximum"
         }
       ]
@@ -470,6 +470,238 @@
           "max": 179.1,
           "effective_date": "2026-11-24",
           "published_change": -6.0,
+          "change_basis": "maximum"
+        }
+      ]
+    },
+    {
+      "source": "ns",
+      "signature": "de0cdd70bee63eaa4adec116264dd9f6c32b772df41a3fbd52afb79b20b4a1f3",
+      "captured_at": "2026-11-27T09:22:58+00:00",
+      "prices": [
+        {
+          "id": "ns-zone1-regular-self",
+          "province": "NS",
+          "zone": "Zone 1",
+          "fuel": "regular",
+          "service": "self",
+          "min": 150.7,
+          "max": 153.7,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone1-diesel-self",
+          "province": "NS",
+          "zone": "Zone 1",
+          "fuel": "diesel",
+          "service": "self",
+          "min": 215.5,
+          "max": 218.5,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone2-regular-self",
+          "province": "NS",
+          "zone": "Zone 2",
+          "fuel": "regular",
+          "service": "self",
+          "min": 151.3,
+          "max": 154.3,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone2-diesel-self",
+          "province": "NS",
+          "zone": "Zone 2",
+          "fuel": "diesel",
+          "service": "self",
+          "min": 216.1,
+          "max": 219.1,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone3-regular-self",
+          "province": "NS",
+          "zone": "Zone 3",
+          "fuel": "regular",
+          "service": "self",
+          "min": 151.7,
+          "max": 154.7,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone3-diesel-self",
+          "province": "NS",
+          "zone": "Zone 3",
+          "fuel": "diesel",
+          "service": "self",
+          "min": 216.6,
+          "max": 219.5,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone4-regular-self",
+          "province": "NS",
+          "zone": "Zone 4",
+          "fuel": "regular",
+          "service": "self",
+          "min": 151.9,
+          "max": 154.8,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone4-diesel-self",
+          "province": "NS",
+          "zone": "Zone 4",
+          "fuel": "diesel",
+          "service": "self",
+          "min": 216.7,
+          "max": 219.6,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone5-regular-self",
+          "province": "NS",
+          "zone": "Zone 5",
+          "fuel": "regular",
+          "service": "self",
+          "min": 151.9,
+          "max": 154.8,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone5-diesel-self",
+          "province": "NS",
+          "zone": "Zone 5",
+          "fuel": "diesel",
+          "service": "self",
+          "min": 216.7,
+          "max": 219.6,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone6-regular-self",
+          "province": "NS",
+          "zone": "Zone 6",
+          "fuel": "regular",
+          "service": "self",
+          "min": 152.7,
+          "max": 155.6,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "ns-zone6-diesel-self",
+          "province": "NS",
+          "zone": "Zone 6",
+          "fuel": "diesel",
+          "service": "self",
+          "min": 217.5,
+          "max": 220.4,
+          "effective_date": "2026-11-27"
+        }
+      ]
+    },
+    {
+      "source": "pei",
+      "signature": "5a8c907e9403ddbccddd3ebbbafa4210e86a7cdfa4e45509e2ce0da8a2a19821",
+      "captured_at": "2026-11-27T09:22:58+00:00",
+      "prices": [
+        {
+          "id": "pei-island-regular-self",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "regular",
+          "service": "self",
+          "min": 151.7,
+          "max": 152.8,
+          "effective_date": "2026-11-27",
+          "published_change": -3.5,
+          "change_basis": "minimum"
+        },
+        {
+          "id": "pei-island-midgrade-self",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "midgrade",
+          "service": "self",
+          "min": 158.6,
+          "max": 159.7,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "pei-island-premium-self",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "premium",
+          "service": "self",
+          "min": 165.5,
+          "max": 166.6,
+          "effective_date": "2026-11-27",
+          "published_change": -4.5,
+          "change_basis": "minimum"
+        },
+        {
+          "id": "pei-island-diesel-self",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "diesel",
+          "service": "self",
+          "min": 217.0,
+          "max": 218.2,
+          "effective_date": "2026-11-27",
+          "published_change": -9.0,
+          "change_basis": "minimum"
+        },
+        {
+          "id": "pei-island-regular-full",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "regular",
+          "service": "full",
+          "min": 151.7,
+          "max": 155.7,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "pei-island-midgrade-full",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "midgrade",
+          "service": "full",
+          "min": 158.6,
+          "max": 162.6,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "pei-island-premium-full",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "premium",
+          "service": "full",
+          "min": 165.5,
+          "max": 169.5,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "pei-island-diesel-full",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "diesel",
+          "service": "full",
+          "min": 217.0,
+          "max": 221.0,
+          "effective_date": "2026-11-27"
+        },
+        {
+          "id": "pei-island-furnace-delivery",
+          "province": "PEI",
+          "zone": "Island-wide",
+          "fuel": "furnace",
+          "service": "delivery",
+          "min": null,
+          "max": 168.6,
+          "effective_date": "2026-11-27",
+          "published_change": -10.0,
           "change_basis": "maximum"
         }
       ]
